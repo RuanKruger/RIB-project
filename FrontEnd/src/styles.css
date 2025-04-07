@@ -1,0 +1,51 @@
+/* src/styles.css */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+.form-row mat-form-field {
+  width: 100%;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.action-buttons {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.detail-container {
+  padding: 10px 0;
+}
+
+.detail-row {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-label {
+  font-weight: 500;
+  width: 180px;
+}
+
+.detail-value {
+  flex: 1;
+}

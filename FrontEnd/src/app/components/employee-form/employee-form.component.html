@@ -1,0 +1,69 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ isEditMode ? 'Edit Employee' : 'New Employee' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" placeholder="First Name">
+            <mat-error *ngIf="employeeForm.get('firstName')?.hasError('required')">First name is required</mat-error>
+            <mat-error *ngIf="employeeForm.get('firstName')?.hasError('maxlength')">First name is too long</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" placeholder="Last Name">
+            <mat-error *ngIf="employeeForm.get('lastName')?.hasError('required')">Last name is required</mat-error>
+            <mat-error *ngIf="employeeForm.get('lastName')?.hasError('maxlength')">Last name is too long</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Birth Date</mat-label>
+            <input matInput [matDatepicker]="birthDatePicker" formControlName="birthDate">
+            <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #birthDatePicker></mat-datepicker>
+            <mat-error *ngIf="employeeForm.get('birthDate')?.hasError('required')">Birth date is required</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Employee Number</mat-label>
+            <input matInput formControlName="employeeNum" placeholder="Employee Number">
+            <mat-error *ngIf="employeeForm.get('employeeNum')?.hasError('required')">Employee number is required</mat-error>
+            <mat-error *ngIf="employeeForm.get('employeeNum')?.hasError('maxlength')">Employee number is too long</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Hire Date</mat-label>
+            <input matInput [matDatepicker]="hireDatePicker" formControlName="employeeDate">
+            <mat-datepicker-toggle matSuffix [for]="hireDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #hireDatePicker></mat-datepicker>
+            <mat-error *ngIf="employeeForm.get('employeeDate')?.hasError('required')">Hire date is required</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row" *ngIf="isEditMode">
+          <mat-form-field appearance="outline">
+            <mat-label>Termination Date</mat-label>
+            <input matInput [matDatepicker]="terminatedPicker" formControlName="terminated">
+            <mat-datepicker-toggle matSuffix [for]="terminatedPicker"></mat-datepicker-toggle>
+            <mat-datepicker #terminatedPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-actions">
+          <button mat-raised-button type="button" (click)="goBack()">Cancel</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
